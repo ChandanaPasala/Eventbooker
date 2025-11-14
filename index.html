@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EventVibe - Book Your Experience</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="hero-header">
+    <div class="header-content">
+      <h1>Event<span class="highlight">Vibe</span></h1>
+      <p>Discover & Book Unforgettable Experiences</p>
+    </div>
+    <div class="wave"></div>
+  </header>
+
+  <div class="container">
+
+    <!-- Event Grid -->
+    <section class="events-section">
+      <h2 class="section-title">Featured Events</h2>
+      <div class="event-grid">
+
+        <!-- Event 1 -->
+        <div class="event-card" data-event="Sunset Jazz Night">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Jazz Night">
+            <div class="card-badge">Live</div>
+          </div>
+          <div class="card-body">
+            <h3>Sunset Jazz Night</h3>
+            <p class="event-meta">
+              <span>November 18, 2025</span> • 
+              <span>7:00 PM</span>
+            </p>
+            <p class="event-desc">Smooth jazz under the stars with top artists.</p>
+            <div class="event-footer">
+              <span class="seats">32 Seats Left</span>
+              <button class="book-btn" onclick="openModal('Sunset Jazz Night')">Book Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Event 2 -->
+        <div class="event-card" data-event="AI Innovation Summit">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="AI Summit">
+            <div class="card-badge">Tech</div>
+          </div>
+          <div class="card-body">
+            <h3>AI Innovation Summit</h3>
+            <p class="event-meta">
+              <span>December 3, 2025</span> • 
+              <span>9:00 AM</span>
+            </p>
+            <p class="event-desc">Explore the future of artificial intelligence.</p>
+            <div class="event-footer">
+              <span class="seats">18 Seats Left</span>
+              <button class="book-btn" onclick="openModal('AI Innovation Summit')">Book Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Event 3 – Food & Wine Festival (now with two images) -->
+        <div class="event-card" data-event="Food & Wine Festival">
+          <div class="card-image double-img">
+            <!-- Primary image (visible by default) -->
+            <img class="img-primary" 
+                 src="https://images.unsplash.com/photo-1517248135467-2c7ed6da9f5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                 alt="Food & Wine Festival – Main">
+            <!-- Secondary image (appears on hover) -->
+            <img class="img-secondary" 
+                 src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                 alt="Food & Wine Festival – Alternate">
+            <div class="card-badge">Food</div>
+          </div>
+          <div class="card-body">
+            <h3>Food & Wine Festival</h3>
+            <p class="event-meta">
+              <span>November 29, 2025</span> • 
+              <span>12:00 PM</span>
+            </p>
+            <p class="event-desc">Taste global cuisines paired with fine wines.</p>
+            <div class="event-footer">
+              <span class="seats">45 Seats Left</span>
+              <button class="book-btn" onclick="openModal('Food & Wine Festival')">Book Now</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">×</span>
+        <h2 id="modalTitle">Book Event</h2>
+        <form onsubmit="alert('Booking Confirmed!'); closeModal(); return false;">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="e.g. Alex Johnson" required />
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" placeholder="alex@example.com" required />
+          </div>
+          <div class="form-group">
+            <label>Number of Tickets</label>
+            <input type="number" min="1" max="10" value="1" required />
+          </div>
+          <button type="submit" class="submit-btn">Confirm Booking</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function openModal(eventName) {
+      document.getElementById('bookingModal').style.display = 'flex';
+      document.getElementById('modalTitle').innerText = 'Book: ' + eventName;
+    }
+
+    function closeModal() {
+      document.getElementById('bookingModal').style.display = 'none';
+    }
+
+    window.onclick = function(e) {
+      const modal = document.getElementById('bookingModal');
+      if (e.target === modal) closeModal();
+    }
+  </script>
+
+</body>
+</html>
